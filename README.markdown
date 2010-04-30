@@ -12,7 +12,7 @@ This version of Social Date is developed for ExpressionEngine 1.6.x
 
 The date given in the date parameter can be in any format as well as in the past or future.
 
-    {exp:social_date date='{expiration_date}'}
-    {exp:social_date date='next monday'}
-    {exp:social_date date='1272660359'}
+    {exp:social_date date='{expiration_date}'} // outputs: 'in about 1 day'
+    {exp:social_date date='next monday'} // outputs: 'in about 2 days'
+    {exp:social_date date='1272660359'} // output: '2 hours ago'
     
