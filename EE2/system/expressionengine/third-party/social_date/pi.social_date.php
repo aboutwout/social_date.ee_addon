@@ -47,8 +47,12 @@ class Social_date {
 		if ( empty($date) ) $date = $this->EE->TMPL->tagdata;
 		if ( empty($date) ) return;
 		
-		$timestamp = is_numeric($date) ? $date : strtotime($date);
+		# load the CI helper
+		$this->EE->load->helper('date');
 		
+		# build the timestamp
+		$timestamp = is_numeric($date) ? $date : strtotime($date);
+
 		$parts = array(
 			array('second', 60,	 1),
 			array('minute', 60, 60),
@@ -59,8 +63,8 @@ class Social_date {
 			array('year', 999, 29030400)
 		);
 		
-		$diff = time() - $timestamp;
-
+		$diff = local_to_gmt(time()) - $timestamp;
+		
 		foreach ($parts as $key => $part)
 		{
 			$period = floor(abs($diff) / $part[2]);
@@ -81,7 +85,7 @@ class Social_date {
 	}
 
 	/**
-	* Plugin Usage
+	* Pluginugin Usage
 	*
 	* @return	string
 	*/	  
